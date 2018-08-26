@@ -11,6 +11,7 @@ load("//third_party/sycl:sycl_configure.bzl", "sycl_configure")
 load("//third_party/systemlibs:syslibs_configure.bzl", "syslibs_configure")
 load("//third_party/toolchains/clang6:repo.bzl", "clang6_configure")
 load("//third_party/toolchains/cpus/arm:arm_compiler_configure.bzl", "arm_compiler_configure")
+load("//third_party/toolchains/cpus/arc:arc_compiler_configure.bzl", "arc_compiler_configure")
 load("//third_party:repo.bzl", "tf_http_archive")
 load("//third_party/clang_toolchain:cc_configure_clang.bzl", "cc_download_clang_toolchain")
 load("@io_bazel_rules_closure//closure/private:java_import_external.bzl", "java_import_external")
@@ -55,6 +56,12 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
         name = "local_config_arm_compiler",
         remote_config_repo = "../arm_compiler",
         build_file = clean_dep("//third_party/toolchains/cpus/arm:BUILD"),
+    )
+
+    arc_compiler_configure(
+        name = "local_config_arc_compiler",
+        remote_config_repo = "../arc_compiler",
+        build_file = clean_dep("//third_party/toolchains/cpus/arc:BUILD"),
     )
 
     mkl_repository(
@@ -136,6 +143,18 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
             # "https://github.com/raspberrypi/tools/archive/0e906ebc527eab1cdbf7adabff5b474da9562e9f.tar.gz",
         ],
         build_file = clean_dep("//:arm_compiler.BUILD"),
+    )
+    tf_http_archive(
+        name = "arc_compiler",
+        sha256 = "8e736178343cea9a6cbe63a7d86fa9e81db6671f27fc8a9a7cea98cc6183bbcc",
+        strip_prefix = "arc-gnu-2018.03-uclibc-linux",
+        urls = [
+	    "https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/download/arc-2018.03-release/arc_gnu_2018.03_prebuilt_uclibc_le_archs_linux_install.tar.gz"
+            # Please uncomment me, when the next upgrade happens. Then
+            # remove the whitelist entry in third_party/repo.bzl.
+            # "https://github.com/raspberrypi/tools/archive/0e906ebc527eab1cdbf7adabff5b474da9562e9f.tar.gz",
+        ],
+        build_file = clean_dep("//:arc_compiler.BUILD"),
     )
 
     tf_http_archive(

@@ -43,9 +43,13 @@ limitations under the License.
 #elif defined(__arm__)
 #define PLATFORM_POSIX
 
+#elif defined(__arc__)
+#define PLATFORM_POSIX
+
+
 // Require an outside macro to tell us if we're building for Raspberry Pi or
 // another ARM device that's not a mobile platform.
-#if !defined(RASPBERRY_PI) && !defined(ARM_NON_MOBILE)
+#if !defined(RASPBERRY_PI) && !defined(ARM_NON_MOBILE) && !defined(__arc__)
 #define IS_MOBILE_PLATFORM
 #endif  // !defined(RASPBERRY_PI) && !defined(ARM_NON_MOBILE)
 

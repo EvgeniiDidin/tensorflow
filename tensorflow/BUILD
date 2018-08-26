@@ -159,6 +159,15 @@ config_setting(
 )
 
 config_setting(
+    name = "arc",
+    values = {
+        "crosstool_top": "@local_config_arc_compiler//:toolchain",
+        "cpu": "arc",
+    },
+    visibility = ["//visibility:public"],
+)
+
+config_setting(
     name = "linux_ppc64le",
     values = {"cpu": "ppc"},
     visibility = ["//visibility:public"],

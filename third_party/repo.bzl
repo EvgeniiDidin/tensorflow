@@ -16,6 +16,7 @@
 
 _SINGLE_URL_WHITELIST = depset([
     "arm_compiler",
+    "arc_compiler",
 ])
 
 def _is_windows(ctx):

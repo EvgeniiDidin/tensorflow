@@ -147,7 +147,7 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
     tf_http_archive(
         name = "arc_compiler",
         sha256 = "8e736178343cea9a6cbe63a7d86fa9e81db6671f27fc8a9a7cea98cc6183bbcc",
-        strip_prefix = "arc-gnu-2018.03-uclibc-linux",
+        strip_prefix = "arc_gnu_2018.03_prebuilt_uclibc_le_archs_linux_install",
         urls = [
 	    "https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/download/arc-2018.03-release/arc_gnu_2018.03_prebuilt_uclibc_le_archs_linux_install.tar.gz"
             # Please uncomment me, when the next upgrade happens. Then

@@ -62,25 +62,24 @@ toolchain {
   target_system_name: "arc"
   toolchain_identifier: "arc-linux"
 
-  tool_path { name: "ar" path: "%{ARM_COMPILER_PATH}%/bin/arc-linux-ar" }
+  tool_path { name: "ar" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-ar" }
   tool_path { name: "compat-ld" path: "/bin/false" }
-  tool_path { name: "cpp" path: "%{ARM_COMPILER_PATH}%/bin/arm-linux-gnueabihf-cpp" }
-  tool_path { name: "dwp" path: "%{ARM_COMPILER_PATH}%/bin/arm-linux-gnueabihf-dwp" }
-  tool_path { name: "gcc" path: "%{ARM_COMPILER_PATH}%/bin/arm-linux-gnueabihf-gcc" }
-  tool_path { name: "gcov" path: "%{ARM_COMPILER_PATH}%/bin/arm-linux-gnueabihf-gcov" }
-  tool_path { name: "ld" path: "%{ARM_COMPILER_PATH}%/bin/arm-linux-gnueabihf-ld" }
+  tool_path { name: "cpp" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-cpp" }
+  tool_path { name: "dwp" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-dwp" }
+  tool_path { name: "gcc" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-gcc" }
+  tool_path { name: "gcov" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-gcov" }
+  tool_path { name: "ld" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-ld" }
 
-  tool_path { name: "nm" path: "%{ARM_COMPILER_PATH}%/bin/arm-linux-gnueabihf-nm" }
-  tool_path { name: "objcopy" path: "%{ARM_COMPILER_PATH}%/bin/arm-linux-gnueabihf-objcopy" }
-  tool_path { name: "objdump" path: "%{ARM_COMPILER_PATH}%/bin/arm-linux-gnueabihf-objdump" }
-  tool_path { name: "strip" path: "%{ARM_COMPILER_PATH}%/bin/arm-linux-gnueabihf-strip" }
+  tool_path { name: "nm" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-nm" }
+  tool_path { name: "objcopy" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-objcopy" }
+  tool_path { name: "objdump" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-objdump" }
+  tool_path { name: "strip" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-strip" }
 
-  cxx_builtin_include_directory: "%{ARM_COMPILER_PATH}%/arm-linux-gnueabihf/include/c++/4.9.3/"
-  cxx_builtin_include_directory: "%{ARM_COMPILER_PATH}%/arm-linux-gnueabihf/sysroot/usr/include/"
-  cxx_builtin_include_directory: "%{ARM_COMPILER_PATH}%/arm-linux-gnueabihf/libc/usr/include/"
-  cxx_builtin_include_directory: "%{ARM_COMPILER_PATH}%/lib/gcc/arm-linux-gnueabihf/4.9.3/include"
-  cxx_builtin_include_directory: "%{ARM_COMPILER_PATH}%/lib/gcc/arm-linux-gnueabihf/4.9.3/include-fixed"
-  cxx_builtin_include_directory: "%{ARM_COMPILER_PATH}%/local_include"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-uclibc/include/c++/7.3.1/"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-uclibc/sysroot/usr/include/"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-uclibc/7.3.1/include"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-uclibc/7.3.1/include-fixed"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/local_include"
   cxx_builtin_include_directory: "/usr/include"
   # The path below must match the one used in
   # tensorflow/tools/ci_build/pi/build_raspberry_pi.sh.
@@ -90,7 +89,7 @@ toolchain {
   # explicitly set them as flags. There's a query to the Bazel team outstanding about
   # why this is necessary.
   cxx_flag: "-isystem"
-  cxx_flag: "/usr/include/arm-linux-gnueabihf"
+  cxx_flag: "/usr/include/arc-snps-linux-uclibc"
   cxx_flag: "-isystem"
   cxx_flag: "%{PYTHON_INCLUDE_PATH}%"
   cxx_flag: "-isystem"

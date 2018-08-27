@@ -59,9 +59,9 @@ filegroup(
 filegroup(
     name = "compiler_pieces",
     srcs = glob([
-        "arc-snps-linux-uclibc/**",
+        "arc-snps-linux-gnu/**",
         "libexec/**",
-        "lib/gcc/arc-snps-linux-uclibc/**",
+        "lib/gcc/arc-snps-linux-gnu/**",
         "include/**",
     ]),
 )

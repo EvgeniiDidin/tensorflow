@@ -146,10 +146,10 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
     )
     tf_http_archive(
         name = "arc_compiler",
-        sha256 = "8e736178343cea9a6cbe63a7d86fa9e81db6671f27fc8a9a7cea98cc6183bbcc",
-        strip_prefix = "arc_gnu_2018.03_prebuilt_uclibc_le_archs_linux_install",
+        sha256 = "7715116db4d72aa9d33a584867ddb77ece45ef9c645b1474511784eb9b54449e",
+        strip_prefix = "arc_gnu_2018.03_prebuilt_glibc_le_archs_linux_install",
         urls = [
-	    "https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/download/arc-2018.03-release/arc_gnu_2018.03_prebuilt_uclibc_le_archs_linux_install.tar.gz"
+	    "https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/download/arc-2018.03-release/arc_gnu_2018.03_prebuilt_glibc_le_archs_linux_install.tar.gz"
             # Please uncomment me, when the next upgrade happens. Then
             # remove the whitelist entry in third_party/repo.bzl.
             # "https://github.com/raspberrypi/tools/archive/0e906ebc527eab1cdbf7adabff5b474da9562e9f.tar.gz",

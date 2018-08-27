@@ -75,10 +75,10 @@ toolchain {
   tool_path { name: "objdump" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-objdump" }
   tool_path { name: "strip" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-strip" }
 
-  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-uclibc/include/c++/7.3.1/"
-  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-uclibc/sysroot/usr/include/"
-  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-uclibc/7.3.1/include"
-  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-uclibc/7.3.1/include-fixed"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-gnu/include/c++/7.3.1/"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-gnu/sysroot/usr/include/"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-gnu/7.3.1/include"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-gnu/7.3.1/include-fixed"
   cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/local_include"
   cxx_builtin_include_directory: "/usr/include"
   # The path below must match the one used in
@@ -89,7 +89,7 @@ toolchain {
   # explicitly set them as flags. There's a query to the Bazel team outstanding about
   # why this is necessary.
   cxx_flag: "-isystem"
-  cxx_flag: "/usr/include/arc-snps-linux-uclibc"
+  cxx_flag: "/usr/include/arc-snps-linux-gnu"
   cxx_flag: "-isystem"
   cxx_flag: "%{PYTHON_INCLUDE_PATH}%"
   cxx_flag: "-isystem"

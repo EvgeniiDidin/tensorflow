@@ -75,16 +75,18 @@ toolchain {
   tool_path { name: "objdump" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-objdump" }
   tool_path { name: "strip" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-strip" }
 
-  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-gnu/include/c++/7.3.1/"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-gnu/include/c++/8.1.1/"
   cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-gnu/sysroot/usr/include/"
-  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-gnu/7.3.1/include"
-  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-gnu/7.3.1/include-fixed"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-gnu/8.1.1/include"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-gnu/8.1.1/include-fixed"
   cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/local_include"
   cxx_builtin_include_directory: "/usr/include"
   # The path below must match the one used in
   # tensorflow/tools/ci_build/pi/build_raspberry_pi.sh.
   cxx_builtin_include_directory: "/tmp/openblas_install/include/"
   cxx_flag: "-std=c++11"
+  cxx_flag: "-mno-millicode"
+
   # The cxx_builtin_include_directory directives don't seem to be adding these, so
   # explicitly set them as flags. There's a query to the Bazel team outstanding about
   # why this is necessary.
@@ -92,9 +94,10 @@ toolchain {
   cxx_flag: "/usr/include/arc-snps-linux-gnu"
   cxx_flag: "-isystem"
   cxx_flag: "%{PYTHON_INCLUDE_PATH}%"
-  cxx_flag: "-isystem"
-  cxx_flag: "/usr/include/"
+  #cxx_flag: "-isystem"
+  #cxx_flag: "/usr/include/"
   linker_flag: "-lstdc++"
+  linker_flag: "-mno-millicode"
 
   unfiltered_cxx_flag: "-Wno-builtin-macro-redefined"
   unfiltered_cxx_flag: "-D__DATE__=\"redacted\""
@@ -107,7 +110,8 @@ toolchain {
   compiler_flag: "-U_FORTIFY_SOURCE"
   compiler_flag: "-D_FORTIFY_SOURCE=1"
   compiler_flag: "-fstack-protector"
-  compiler_flag: "-DRASPBERRY_PI"  # To differentiate from mobile builds.
+  compiler_flag: "-mno-millicode"
+
   linker_flag: "-Wl,-z,relro,-z,now"
 
   linker_flag: "-no-canonical-prefixes"
@@ -115,6 +119,7 @@ toolchain {
 
   linker_flag: "-Wl,--build-id=md5"
   linker_flag: "-Wl,--hash-style=gnu"
+
 
   compilation_mode_flags {
     mode: DBG
@@ -133,7 +138,7 @@ toolchain {
     # Conservative choice for -O
     # -O3 can increase binary size and even slow down the resulting binaries.
     # Profile first and / or use FDO if you need better performance than this.
-    compiler_flag: "-O2"
+    # compiler_flag: "-O2"
 
     # Disable assertions
     compiler_flag: "-DNDEBUG"
@@ -141,6 +146,7 @@ toolchain {
     # Removal of unused code and data at link time (can this increase binary size in some cases?).
     compiler_flag: "-ffunction-sections"
     compiler_flag: "-fdata-sections"
+    compiler_flag: "-mno-millicode"
     linker_flag: "-Wl,--gc-sections"
   }
   linking_mode_flags { mode: DYNAMIC }
@@ -213,6 +219,7 @@ toolchain {
   compiler_flag: "-D_FORTIFY_SOURCE=1"
   compiler_flag: "-fstack-protector"
   linker_flag: "-Wl,-z,relro,-z,now"
+
 
   # Enable coloring even if there's no attached terminal. Bazel removes the
   # escape sequences if --nocolor is specified. This isn't supported by gcc

@@ -75,10 +75,10 @@ toolchain {
   tool_path { name: "objdump" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-objdump" }
   tool_path { name: "strip" path: "%{ARC_COMPILER_PATH}%/bin/arc-linux-strip" }
 
-  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-gnu/include/c++/8.1.1/"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-gnu/include/c++/8.2.1/"
   cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/arc-snps-linux-gnu/sysroot/usr/include/"
-  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-gnu/8.1.1/include"
-  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-gnu/8.1.1/include-fixed"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-gnu/8.2.1/include"
+  cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/lib/gcc/arc-snps-linux-gnu/8.2.1/include-fixed"
   cxx_builtin_include_directory: "%{ARC_COMPILER_PATH}%/local_include"
   cxx_builtin_include_directory: "/usr/include"
   # The path below must match the one used in
@@ -86,6 +86,8 @@ toolchain {
   cxx_builtin_include_directory: "/tmp/openblas_install/include/"
   cxx_flag: "-std=c++11"
   cxx_flag: "-mno-millicode"
+  cxx_flag: "-mlong-calls"
+  #cxx_flag: "-matomic"
 
   # The cxx_builtin_include_directory directives don't seem to be adding these, so
   # explicitly set them as flags. There's a query to the Bazel team outstanding about
@@ -98,6 +100,9 @@ toolchain {
   #cxx_flag: "/usr/include/"
   linker_flag: "-lstdc++"
   linker_flag: "-mno-millicode"
+  linker_flag: "-mlong-calls"
+  #linker_flag: "-matomic"
+
 
   unfiltered_cxx_flag: "-Wno-builtin-macro-redefined"
   unfiltered_cxx_flag: "-D__DATE__=\"redacted\""
@@ -111,6 +116,8 @@ toolchain {
   compiler_flag: "-D_FORTIFY_SOURCE=1"
   compiler_flag: "-fstack-protector"
   compiler_flag: "-mno-millicode"
+  compiler_flag: "-mlong-calls"
+  #compiler_flag: "-matomic"
 
   linker_flag: "-Wl,-z,relro,-z,now"
 
@@ -147,6 +154,9 @@ toolchain {
     compiler_flag: "-ffunction-sections"
     compiler_flag: "-fdata-sections"
     compiler_flag: "-mno-millicode"
+    compiler_flag: "-mlong-calls"
+    #compiler_flag: "-matomic"
+    #linker_flag: "-matomic"
     linker_flag: "-Wl,--gc-sections"
   }
   linking_mode_flags { mode: DYNAMIC }

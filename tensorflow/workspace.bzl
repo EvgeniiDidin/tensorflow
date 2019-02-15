@@ -147,16 +147,9 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
     tf_http_archive(
         name = "arc_compiler",
         sha256 = "d4f798344065edfbbc4da215e23de7d9d48d36e77bb249e2af216f93b5a8d684",
-       # strip_prefix = "arc_gnu_glibc-2018.09-eng002",
 	strip_prefix = "arc_gnu",
-	#strip_prefix = "arc_gnu_2018.09",
         urls = [
-	    #"https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/download/arc-2018.03-release/arc_gnu_2018.03_prebuilt_glibc_le_archs_linux_install.tar.gz"
-	    "file:///home/didin/work/tmp/Tensorflow_build_flow/cross_toolchain/arc_gnu.tar.gz"
-	    #"file:///home/didin/work/tmp/Tensorflow_build_flow/cross_toolchain/arc_gnu_2018.09.tar.gz"
-	    # Please uncomment me, when the next upgrade happens. Then
-            # remove the whitelist entry in third_party/repo.bzl.
-            # "https://github.com/raspberrypi/tools/archive/0e906ebc527eab1cdbf7adabff5b474da9562e9f.tar.gz",
+	    "file://PATHTOWORKFLOW/crosstoolchain/arc_gnu.tar.gz"
         ],
         build_file = clean_dep("//:arc_compiler.BUILD"),
     )

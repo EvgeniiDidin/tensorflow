@@ -764,10 +764,10 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
     native.new_http_archive(
         name = "double_conversion",
         urls = [
-            "https://github.com/google/double-conversion/archive/3992066a95b823efc8ccc1baf82a1cfc73f6e9b8.zip",
+            "https://github.com/google/double-conversion/archive/eafa625a34fd5d8bec18eddfccbca55ce77b4849.zip",
         ],
-        sha256 = "2f7fbffac0d98d201ad0586f686034371a6d152ca67508ab611adc2386ad30de",
-        strip_prefix = "double-conversion-3992066a95b823efc8ccc1baf82a1cfc73f6e9b8",
+        sha256 = "efd3f8ee0784ce2614e03383891797ac64706491d5495aca7bba2f41a98c91e0",
+        strip_prefix = "double-conversion-eafa625a34fd5d8bec18eddfccbca55ce77b4849",
         build_file = clean_dep("//third_party:double_conversion.BUILD"),
     )
 

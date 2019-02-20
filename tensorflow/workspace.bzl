@@ -546,6 +546,7 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
             "https://github.com/google/boringssl/archive/7f634429a04abc48e2eb041c81c5235816c96514.tar.gz",
         ],
         sha256 = "1188e29000013ed6517168600fc35a010d58c5d321846d6a6dfee74e4c788b45",
+	patch_file = clean_dep("//third_party/boringssl:0001-ARC-support.patch"),
         strip_prefix = "boringssl-7f634429a04abc48e2eb041c81c5235816c96514",
     )
 

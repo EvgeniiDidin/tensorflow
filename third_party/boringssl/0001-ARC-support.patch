@@ -1,0 +1,13 @@
+diff --git a/src/include/openssl/base.h b/src/include/openssl/base.h
+index 7fe232f3b..8d062eab5 100644
+--- a/src/include/openssl/base.h
++++ b/src/include/openssl/base.h
+@@ -114,6 +114,8 @@ extern "C" {
+ #define OPENSSL_32_BIT
+ #elif defined(__myriad2__)
+ #define OPENSSL_32_BIT
++#elif defined(__arc__)
++#define OPENSSL_32_BIT
+ #else
+ // Note BoringSSL only supports standard 32-bit and 64-bit two's-complement,
+ // little-endian architectures. Functions will not produce the correct answer
